@@ -4,8 +4,9 @@ import $ from 'jquery';
 import {API_URL, POLL_INTERVAL} from './global';
 
 import TopicHeader from './TopicHeader';
-import CommentList from './CommentList';
-import CommentForm from './CommentForm';
+// import CommentList from './CommentList';
+// import CommentForm from './CommentForm';
+import CommentBox from './CommentBox';
 import '../css/base.css';
 
 module.exports = React.createClass({
