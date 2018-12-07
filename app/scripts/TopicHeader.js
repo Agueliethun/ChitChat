@@ -7,7 +7,7 @@ import '../css/base.css';
 
 module.exports =  React.createClass({
   getInitialState: function() {
-    return {topic: '', topicInput: '', _isMounted : false, data : []};
+    return {topic: null, topicInput: '', _isMounted : false, data : []};
   },
   loadTopicsFromServer: function() {
     if (this.state._isMounted) {
@@ -18,6 +18,13 @@ module.exports =  React.createClass({
       })
       .done(function (result) {
         this.setState({data: result});
+        if (!this.state.topic) {
+          console.log($('#topics'));
+          this.setState({topic: $('#topics')[0].value});
+          this.props.onTopicChange({id : $('#topics')[0].value});
+        } else {
+          console.log(this.state.topic);
+        }
       }.bind(this))
       .fail(function (xhr, status, errorThrown) {
         console.error(API_URL, status, errorThrown.toString());
@@ -51,13 +58,13 @@ module.exports =  React.createClass({
     this.state._isMounted = false;
   },
   render: function() {
-    var topicNodes = this.state.data.map(function(topic) {
+    let topicNodes = this.state.data.map(function(topic) {
       return (
-        <option value={topic.id}>{topic.topic} : {topic.id}</option>
+        <option value={topic.id}>{topic.topic}</option>
       );
     });
 
-    let select = <select id='topics' name='topics' onChange={this.handleTopicChange}>{topicNodes}</select>;
+    let select = <select id='topics' name='topics' onChange={this.handleTopicChange}>{topicNodes}</select>;    
     
     return (
       <div className="topicHeader">

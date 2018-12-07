@@ -27,6 +27,7 @@ module.exports =  React.createClass({
           value={this.state.text}
           onChange={this.handleTextChange}
         />
+        </textarea>
         <input type="submit" value="Post" />
       </form>
     );
