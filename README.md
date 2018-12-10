@@ -2,3 +2,5 @@
 An anonymous forum for quickly discussing topics with fellow humans.
 
 ChitChat is an application that allows users to anonymously discuss topics that are important to them. A user can select a topic from a drop-down spinner that contains a list of all currently avaliable topics. Selecting a topic will adjust the page to show all related comments. A user can also add a new topic about anything they want to talk about. This would take place on one page, with the contents changing depending on the topic selected. However, topics will only remain open if a new comment is posted at least every 30 minutes. We wanted to make a platform that allowed users to freely share their opnions, free of judgment from others and without the hassel of created another online account. In addition, users creating their own topics would allow for organic conversations about the things that matter. This is also diverse enough to include sharing recipies, talking about our favorite albums, and even ~~fighting about~~ discussing politics. 
+
+You can find a running version of this app [here](https://chit--chat.herokuapp.com/)!
