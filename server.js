@@ -45,7 +45,7 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
 
     // make a new topic
     app.post('/api/topics', function(req, res) {
-        console.log(req.body);
+        // console.log(req.body);
         let newTopic = {
             id: Date.now(),
             topic: req.body.name,
