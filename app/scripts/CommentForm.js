@@ -21,13 +21,14 @@ module.exports =  React.createClass({
   render: function() {
     return (
       <form className="commentForm" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add your thoughts..."
-          value={this.state.text}
-          onChange={this.handleTextChange}
-        />
-        </textarea>
+        <textarea 
+        	name="input" 
+        	rows="10" 
+        	cols="30"
+        	placeholder= "Add your thoughts..."
+        	value={this.state.text}
+        	onChange={this.handleTextChange}></textarea>
+        	
         <input type="submit" value="Post" />
       </form>
     );
