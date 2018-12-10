@@ -53,6 +53,7 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
 
         topicCollection.insertOne(newTopic, function(err, result) {
             if (err) throw err;
+            res.sendStatus(201);
         });
 
     });
@@ -63,7 +64,7 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
         topicCollection.deleteOne({id : req.params.id},
             function (err, result) {
                 if (err) throw err;
-                ret = docs;
+                ret = result;
             });
 
         commentCollection.deleteMany({"topic" : req.params.id},
@@ -95,6 +96,7 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
 
         commentCollection.insertOne(newComment, function(err, result) {
             if (err) throw err;
+            res.sendStatus(201);
         });
     });
 
