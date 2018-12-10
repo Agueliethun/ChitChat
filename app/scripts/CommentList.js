@@ -5,7 +5,7 @@ import '../css/base.css';
 
 module.exports =  React.createClass({
   render: function() {
-    console.log(this.props.data);
+    // console.log(this.props.data);
     var commentNodes = this.props.data.map(function(comment) {
       return (
         <Comment>

@@ -74,7 +74,7 @@ module.exports = React.createClass({
     });
   },
   updateTopic: function(topic) {
-    console.log(topic);
+    // console.log(topic);
     this.setState({topic: topic.id});
     this.loadCommentsFromServer();
   },

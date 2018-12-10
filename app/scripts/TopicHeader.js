@@ -19,11 +19,11 @@ module.exports =  React.createClass({
       .done(function (result) {
         this.setState({data: result});
         if (!this.state.topic) {
-          console.log($('#topics'));
+          // console.log($('#topics'));
           this.setState({topic: $('#topics')[0].value});
           this.props.onTopicChange({id : $('#topics')[0].value});
         } else {
-          console.log(this.state.topic);
+          // console.log(this.state.topic);
         }
       }.bind(this))
       .fail(function (xhr, status, errorThrown) {
@@ -35,7 +35,7 @@ module.exports =  React.createClass({
     this.setState({topicInput: e.target.value});
   },
   handleTopicChange: function(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({topic: e.target.value});
     this.props.onTopicChange({id : e.target.value});
   },
