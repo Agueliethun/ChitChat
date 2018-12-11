@@ -53,7 +53,8 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
 
         topicCollection.insertOne(newTopic, function(err, result) {
             if (err) throw err;
-            res.sendStatus(201);
+            console.log(result);
+            res.sendStatus(200);
         });
 
     });
@@ -88,15 +89,16 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
 
     // make a new comment for a given topic
     app.post('/api/topics/:id', function(req, res) {
+        let id = Date.now();
         let newComment = {
-            id : Date.now(),
+            id : id,
             topic : req.body.topic,
             text : req.body.text
         };
 
         commentCollection.insertOne(newComment, function(err, result) {
             if (err) throw err;
-            res.sendStatus(201);
+            res.json({id: id});
         });
     });
 
