@@ -102,6 +102,10 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
         });
     });
 
+    app.get('/api/about', function(req, res){
+        res.sendStatus(201);
+    })
+
     app.use('*', express.static(APP_PATH));
 
     app.listen(app.get('port'), function() {
