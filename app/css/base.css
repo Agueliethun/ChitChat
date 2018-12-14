@@ -17,6 +17,10 @@ body {
   display: flex;
 }
 
+Select {
+  flex : 1;
+}
+
 button.navButton {
   flex: 1;
   margin-left: 12%;

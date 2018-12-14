@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 
 import {API_URL, POLL_INTERVAL} from './global';
+import Select from 'react-select';
 
 import '../css/base.css';
 
@@ -35,9 +36,13 @@ module.exports =  React.createClass({
     this.setState({topicInput: e.target.value});
   },
   handleTopicChange: function(e) {
+    console.log(e);
+    // console.log(this.select);
     // console.log(e.target.value);
-    this.setState({topic: e.target.value});
-    this.props.onTopicChange({id : e.target.value});
+    
+
+    this.setState({topic: e.value});
+    this.props.onTopicChange({id : e.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
@@ -59,12 +64,11 @@ module.exports =  React.createClass({
   },
   render: function() {
     let topicNodes = this.state.data.map(function(topic) {
-      return (
-        <option value={topic.id}>{topic.topic}</option>
-      );
+      return {value : topic.id, label : topic.topic};
     });
 
-    let select = <select id='topics' name='topics' onChange={this.handleTopicChange}>{topicNodes}</select>;    
+    //let select = <select id='topics' name='topics' onChange={this.handleTopicChange}>{topicNodes}</select>; 
+    let select = <Select id='topics' options={topicNodes} onChange={this.handleTopicChange}/>; 
     
     return (
       <div className="topicHeader">
