@@ -9,7 +9,7 @@ import '../css/base.css';
 ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path='/' component={MainPage}/>
-		<Route path='/api/about' component={AboutPage}/>
+		<Route path='/api/about/' component={AboutPage}/>
 	</Router>
   ), document.getElementById('content')
 );

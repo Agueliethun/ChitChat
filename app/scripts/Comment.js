@@ -1,6 +1,7 @@
 import React from 'react';
 import Remarkable from 'remarkable';
 
+import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 
 import '../css/base.css';
@@ -17,11 +18,10 @@ module.exports = React.createClass({
   render: function() {
     let commentFormHolder;
     if (this.props.getCurrentComment() == this.props.id) {
-      commentFormHolder = <CommentForm onCommentSubmit={this.handleCommentSubmit} />;
+      commentFormHolder = <CommentForm onCommentSubmit={this.props.onCommentSubmit} />;
     } else {
       commentFormHolder = <br/>;
     }
-
     return (
       <div className="commentTop">
         <div className="comment" onClick={this.commentSelected}>
@@ -30,6 +30,7 @@ module.exports = React.createClass({
         <div>
           {commentFormHolder}
         </div>
+        <CommentList data={this.props.data} onCommentSelect={this.handleCommentSelect} onCommentSubmit={this.handleCommentSubmit} getCurrentComment={this.getCurrentComment}/>
       </div>
     );
   }

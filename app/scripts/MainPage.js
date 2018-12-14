@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import {Link} from 'react-router';
 
 import {API_URL, POLL_INTERVAL} from './global';
 
@@ -54,6 +55,11 @@ module.exports = React.createClass({
     }
 
     comment.topic = topic;
+    let parentId = this.state.replyComment;
+    if (parentId === '') {
+      parentId = null;
+    }
+    comment.parent = parentId;
 
     var newComments = comments.concat([comment]);
     this.setState({data: newComments});
@@ -75,26 +81,7 @@ module.exports = React.createClass({
         console.error(API_URL, status, err.toString());
       }.bind(this)
     });
-    let putUrl = API_URL + '/comments/' + newCommentId;
 
-    if (!(this.state.replyComment === '')) {
-      $.ajax({
-        url: putUrl,
-        dataType: 'json',
-        type: 'PUT',
-        data: newCommentId,
-        success: function(data) {
-          // console.log(data);
-          // newCommentId = data.id;
-          // this.setState({data: data});
-          this.loadCommentsFromServer();
-        }.bind(this),
-        error: function(xhr, status, err) {
-          this.setState({data: comments});
-          console.error(API_URL, status, err.toString());
-        }.bind(this)
-      });
-    }
   },
   updateTopic: function(topic) {
     // console.log(topic);
@@ -124,12 +111,23 @@ module.exports = React.createClass({
     return this.state.replyComment;
   },
   render: function() {
+    let commentFormHolder;
+    if (!(this.state.replyComment === '')) {
+      commentFormHolder = <CommentForm onCommentSubmit={this.props.handleCommentSubmit} />;
+    } else {
+      commentFormHolder = <br/>;
+    }
+
     return (
       <div className="mainPage">
         <h1>ChitChat</h1>
+        <div className="navBar">
+          <button className="navButton"><Link to='/'>Home</Link></button>
+          <button className="navButton"><Link to='/api/about/'>About</Link></button>
+        </div>
         <TopicHeader onTopicSubmit={this.handleTopicSubmit} onTopicChange={this.updateTopic} />
         <CommentList data={this.state.data} onCommentSelect={this.handleCommentSelect} onCommentSubmit={this.handleCommentSubmit} getCurrentComment={this.getCurrentComment}/>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        {commentFormHolder}
       </div>
     );
   }
