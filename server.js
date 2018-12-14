@@ -93,7 +93,8 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
         let newComment = {
             id : id,
             topic : req.body.topic,
-            text : req.body.text
+            text : req.body.text,
+            parent : req.body.parent
         };
 
         commentCollection.insertOne(newComment, function(err, result) {
@@ -101,10 +102,6 @@ MongoClient.connect('mongodb://cs336:' + process.env.MONGO_PASSWORD + '@ds153380
             res.json({id: id});
         });
     });
-
-    app.get('/api/about', function(req, res){
-        res.sendStatus(201);
-    })
 
     app.use('*', express.static(APP_PATH));
 
