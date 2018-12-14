@@ -10,7 +10,7 @@ module.exports =  React.createClass({
     // console.log(this.props.data);
     var commentNodes = this.props.data.map(function(comment) {
       return (
-        <Comment id={comment.id} onCommentSelect={list.props.onCommentSelect} onCommentSubmit={list.props.onCommentSubmit} getCurrentComment={list.props.getCurrentComment}>
+        <Comment whenClicked={this.handleClick} id={comment.id} onCommentSelect={list.props.onCommentSelect} onCommentSubmit={list.props.onCommentSubmit} getCurrentComment={list.props.getCurrentComment}>
           {comment.text}
         </Comment>
       );
