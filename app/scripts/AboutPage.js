@@ -5,7 +5,7 @@ import {API_URL, POLL_INTERVAL} from './global';
 
 import '../css/base.css';
 
-module.export = React.createClass({
+module.exports = React.createClass({
 	render: function (){
 		<div className="about">
 			<h1>This application was created by Royce Lloyd and Matthew Nykamp</h1>
