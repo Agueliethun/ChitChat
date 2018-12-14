@@ -85,8 +85,11 @@ module.exports = React.createClass({
   },
   updateTopic: function(topic) {
     // console.log(topic);
-    this.setState({topic: topic.id});
-    this.loadCommentsFromServer();
+    this.setState({topic: topic.id, replyComment : ''});
+    setTimeout(function() {
+      this.loadCommentsFromServer();
+    }.bind(this), 5);
+    
   },
   getInitialState: function() {
     return {data: [], _isMounted : false, topic : '', replyComment : ''};
@@ -112,8 +115,8 @@ module.exports = React.createClass({
   },
   render: function() {
     let commentFormHolder;
-    if (!(this.state.replyComment === '')) {
-      commentFormHolder = <CommentForm onCommentSubmit={this.props.handleCommentSubmit} />;
+    if (this.state.replyComment === '') {
+      commentFormHolder = <CommentForm onCommentSubmit={this.handleCommentSubmit} />;
     } else {
       commentFormHolder = <br/>;
     }

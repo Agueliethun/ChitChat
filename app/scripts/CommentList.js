@@ -9,13 +9,6 @@ module.exports =  React.createClass({
     var list = this;
     // console.log(this.props.data);
     var commentNodes = this.props.data.map(function(comment) {
-      if (comment.parent != null) {
-        this.props.data.map(function(innerComment) {
-          if (innerComment.id == comment.parent) {
-            comment.data[comment.data.length] = innerComment;
-          }
-        });
-      }
       return (
         <Comment id={comment.id} onCommentSelect={list.props.onCommentSelect} onCommentSubmit={list.props.onCommentSubmit} getCurrentComment={list.props.getCurrentComment}>
           {comment.text}

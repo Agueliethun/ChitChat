@@ -30,7 +30,6 @@ module.exports = React.createClass({
         <div>
           {commentFormHolder}
         </div>
-        <CommentList data={this.props.data} onCommentSelect={this.handleCommentSelect} onCommentSubmit={this.handleCommentSubmit} getCurrentComment={this.getCurrentComment}/>
       </div>
     );
   }
